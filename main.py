@@ -1,5 +1,11 @@
+from config import Settings
+from client import OpenAIClient
+from api.auth import login
+
 def main():
-    print("Hello from don-botto!")
+    ai = OpenAIClient()
+    ai.trigger()
+    ai._load_context()
 
 
 if __name__ == "__main__":
