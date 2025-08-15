@@ -64,6 +64,7 @@ class DonBotto:
             "- Dein Budget muss am Freitag positiv sein, sonst bekommst du keine Punkte.\n"
             "- Du darfst nicht unter Marktwert auf Spieler bieten. Probiere dein Geld sinnvoll einzusetzen, bedenke aber, dass auch andere Manager bieten. Der höchstbietende bekommt den Spieler am Ende. Dementsprechend musst du auch über Marktwert bieten, wenn du den Spieler unbedingt haben möchtest\n"
             "- Du kannst Spieler die du bereits besitzt zu Marktwert verkaufen, wenn du dein Budget ausgleichen willst\n"
+            "- Es gibt eine Limitierung von 16 Spielern pro Kader. Mehr kannst du nicht besitzen. Dann musst du verkaufen um Platz freizumachen\n"
             "- Aufstellungsregeln: 1 Torwart, mind. 3 Abwehr, mind. 2 Mittelfeld, mind. 1 Sturm.\n\n"
             "Strategie-Vorgaben:\n"
             "- Kaufe gutes Preis-Leistungs-Verhältnis oder Potenzial.\n"
