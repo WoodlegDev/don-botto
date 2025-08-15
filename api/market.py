@@ -1,3 +1,4 @@
+from logger import log
 from config import Settings
 import requests
 
@@ -13,7 +14,8 @@ class MarketApi:
         self.base_url = f"{Settings.kickbase_api_url}/v4/leagues"
 
     def load_context(self):
-        print(self.players_on_transfer())
+        return self.players_on_transfer()
+
 
     def players_on_transfer(self):
         request_url = f"{self.base_url}/{Settings.league_id}/market"
@@ -38,15 +40,20 @@ class MarketApi:
                     "average_points": player["ap"] if "ap" in player else 0,
                     "market_value_trend": Settings.market_value_trend[str(player["mvt"])],
                     "price": player["prc"],
+                    "remaining_seconds_on_market": player["exs"]
                 }
                 mapped_data.append(mapped_player)
         return mapped_data
 
-    def set_player_transfer_price(self, player_id, price):
-        pass
-
     def place_an_offer(self, player_id, price):
-        pass
+        request_url = f"{self.base_url}/{Settings.league_id}/market/{player_id}/offers"
+        request_body = {"price": price}
+        requests.post(request_url, json=request_body, headers=self.headers)
+        log("offer", f"Placed offer for player_id: {player_id} for {price}€")
+
 
     def accept_kickbase_offer(self, player_id):
-        pass
+        request_url = f"{self.base_url}/{Settings.league_id}/market/{player_id}/sell"
+        params = {"playerId": player_id}
+        requests.post(request_url, params=params, headers=self.headers)
+        log("sell", f"Sold player_id: {player_id} to kickbase")

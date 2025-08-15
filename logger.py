@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-def Log(type: str, msg: str):
+def log(type: str, msg: str):
     now = datetime.now(timezone.utc)
     iso_time = now.isoformat()
 
