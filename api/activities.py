@@ -15,7 +15,7 @@ class ActivitiesApi:
     def load_context(self):
         return self.activities()
 
-    def activities(self, max_items=20, start=0):
+    def activities(self, max_items=15, start=0):
         request_url = f"{self.base_url}/{Settings.league_id}/activitiesFeed"
         params = {"max": max_items, "start": start}
         res = requests.get(request_url, headers=self.headers, params=params)
@@ -27,7 +27,7 @@ class ActivitiesApi:
             type_id = str(activity["t"])
             type_name = Settings.activity_type_dict.get(type_id, "unknown")
 
-            if type_name == "bonus_payment":
+            if type_name == "bonus_payment" or type_name == "player_transfer_market":
                 continue
 
             base = {
